@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\acer\\source\\repos\\tetrix1\\tetrix1\\tetrix1.csproj": {}
+    "D:\\Game\\tetrix1\\tetrix1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\acer\\source\\repos\\tetrix1\\tetrix1\\tetrix1.csproj": {
+    "D:\\Game\\tetrix1\\tetrix1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\acer\\source\\repos\\tetrix1\\tetrix1\\tetrix1.csproj",
+        "projectUniqueName": "D:\\Game\\tetrix1\\tetrix1.csproj",
         "projectName": "tetrix1",
-        "projectPath": "C:\\Users\\acer\\source\\repos\\tetrix1\\tetrix1\\tetrix1.csproj",
-        "packagesPath": "C:\\Users\\acer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\acer\\source\\repos\\tetrix1\\tetrix1\\obj\\",
+        "projectPath": "D:\\Game\\tetrix1\\tetrix1.csproj",
+        "packagesPath": "C:\\Users\\VINH\\.nuget\\packages\\",
+        "outputPath": "D:\\Game\\tetrix1\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\acer\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\VINH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

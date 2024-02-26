@@ -1,5 +1,5 @@
 using System;
-namespace Tetris
+namespace Tetris1
 {
     public class BlockQueue
     {

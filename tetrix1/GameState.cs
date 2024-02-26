@@ -1,7 +1,5 @@
 
-
-
-namespace Tetris
+namespace Tetris1
 {
     public class GameState
     {
