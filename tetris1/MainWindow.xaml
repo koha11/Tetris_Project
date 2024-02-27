@@ -3,16 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        xmlns:local="clr-namespace:tetris1"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-=======
-=======
->>>>>>> 25a351cdc0178cee1ee9531db2b3b1137cad95d9
         xmlns:local="clr-namespace:tetrix1"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800"
@@ -42,7 +32,7 @@
             <Canvas x:Name = "GameCanvas"
                     Background = "#101010"
                     Width = "250"
-                    Height = "510"
+                    Height = "500"
                     ClipToBounds = "True"
                     Loaded = "GameCanvas_Loaded" />
                     
@@ -104,9 +94,5 @@
                         Click = "PlayAgain_Click"/>
             </StackPanel>
         </Grid>
-<<<<<<< HEAD
->>>>>>> c9d5fe688ca14cb784afb020ca66564fb9f87ca0
-=======
->>>>>>> 25a351cdc0178cee1ee9531db2b3b1137cad95d9
     </Grid>
 </Window>
