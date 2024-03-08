@@ -1,0 +1,2 @@
+C:\Users\nguye\sourceC#\repos\Tetris1\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\nguye\sourceC#\repos\Tetris1\obj\Debug\net8.0-windows\Tetris1_MarkupCompile.cache
