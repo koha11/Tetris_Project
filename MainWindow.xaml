@@ -12,14 +12,14 @@
         KeyDown = "Window_KeyDown">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinitions Height = "auto"/>
-            <RowDefinitions Height = "*"/>
+            <RowDefinition Height = "auto"/>
+            <RowDefinition Height = "*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinitions Width = "*"/>
-            <ColumnDefinitions Width = "auto"/>
-            <ColumnDefinitions Width = "*"/>
+            <ColumnDefinition Width = "*"/>
+            <ColumnDefinition Width = "auto"/>
+            <ColumnDefinition Width = "*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.Background>
@@ -49,7 +49,7 @@
         <StackPanel Grid.Row = "1"
                     Grid.Column = "0"
                     VerticalAlignment = "Center"
-                    HorizontaAlignment = "Right">
+                    HorizontalAlignment = "Right">
             <TextBlock Text = "Hold"
                         TextAlignment = "Center"/>
 
@@ -61,7 +61,7 @@
         <StackPanel Grid.Row = "1"
                     Grid.Column = "2"
                     VerticalAlignment = "Center"
-                    HorizontaAlignment = "Left">
+                    HorizontalAlignment = "Left">
             <TextBlock Text = "Next"
                         TextAlignment = "Center"/>
 
@@ -71,13 +71,13 @@
         </StackPanel>
 
         <Grid x:Name = "GameOverMenu"
-              Background = "CC000000"
+              Background = "#CC000000"
               Grid.RowSpan = "2"
               Grid.ColumnSpan = "3"
               Visibility = "Hidden">
               
 
-            <StackPanel HorizontaAlignment = "Center"
+            <StackPanel HorizontalAlignment = "Center"
                         VerticalAlignment = "Center">
                 <TextBlock Text = "Game Over"
                             FontSize = "48"
