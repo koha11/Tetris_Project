@@ -8,6 +8,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Tetris1
 {
@@ -142,7 +146,7 @@ namespace Tetris1
             while(!gameState.GameOver)
             {
                 int delay = Math.Max(minDelay, maxDelay - (gameState.Score * delayDecrease));
-                await Task.Delay(delay);
+                await Task.Delay(500);
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
@@ -172,9 +176,9 @@ namespace Tetris1
                     gameState.RotateBlockCW();
                     break;
                 case Key.Z:
-                    gameState.RotateBlockCWW();
+                    gameState.RotateBlockCCW();
                     break;
-                case key.C:
+                case Key.C:
                     gameState.HoldBlock();
                     break;
                 case Key.Space:

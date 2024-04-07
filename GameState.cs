@@ -114,7 +114,7 @@ namespace Tetris1
 
         private bool IsGameOver()
         {
-            return !(GameGrid.IsEmpty(0) && GameGrid.IsEmpty(1));
+            return !(GameGrid.IsRowEmpty(0) && GameGrid.IsRowEmpty(1));
         }
 
         private void PlaceBlock()
@@ -159,7 +159,7 @@ namespace Tetris1
         public int BlockDropDistance()
         {
             int drop = GameGrid.Rows;
-            foreach (Position p in currentBlock.TilePositions());
+            foreach (Position p in currentBlock.TilePositions())
             {
                 drop = System.Math.Min(drop, TileDropDistance(p));
             }
