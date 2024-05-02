@@ -1,8 +1,10 @@
 using System;
 namespace Tetris1
 {
+    //Khai báo lớp BlockQueue
     public class BlockQueue
     {
+        //Khai báo các khối trong game
         private readonly Block[] blocks = new Block[]
         {
             new IBlock(),
