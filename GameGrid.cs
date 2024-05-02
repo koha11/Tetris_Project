@@ -1,37 +1,49 @@
-﻿namespace Tetris1
+namespace Tetris1
 {
     public class GameGrid
     {
+        // Khai báo một mảng hai chiều kiểu int để lưu trữ trạng thái của lưới game
         private readonly int[,] grid; 
 
-        public int Rows { get; }
+        // Số hàng của lưới game.
+        public int Rows { get; } 
 
-        public int Columns { get; }
+        // Số cột của lưới game.
+        public int Columns { get; } 
 
-        public int this[int r, int c]
+        // Định nghĩa một chỉ mục để truy cập trực tiếp vào các ô của lưới.
+        public int this[int r, int c] 
         {
-            get => grid[r, c];
-            set => grid[r, c] = value;
+            // Trả về giá trị tại ô (r, c).
+            get => grid[r, c]; 
+            // Đặt giá trị tại ô (r, c).
+            set => grid[r, c] = value; 
         }
 
-        public GameGrid(int rows, int columns)
+        // Phương thức khởi tạo lưới game với số hàng và số cột cho trước.
+        public GameGrid(int rows, int columns) 
         {
             Rows = rows;
             Columns = columns;
-            grid = new int[Rows, Columns];
+            
+            // Khởi tạo mảng hai chiều với số hàng và số cột đã cho.
+            grid = new int[Rows, Columns]; 
         }
 
-        public bool IsInside(int r, int c)
+        // Kiểm tra xem một ô có nằm trong lưới game hay không.
+        public bool IsInside(int r, int c) 
         {
             return r >= 0 && r < Rows && c >= 0 && c < Columns;
         }
 
-        public bool IsEmpty(int r, int c)
+       // Kiểm tra xem một ô có trống hay không.
+        public bool IsEmpty(int r, int c) 
         {
             return IsInside(r, c) && grid[r, c] == 0;
         }
         
-        public bool IsRowFull(int r)
+        // Kiểm tra xem một hàng có đầy hay không.
+        public bool IsRowFull(int r) 
         {
             for(int c = 0; c < Columns; c++)
             {
@@ -43,7 +55,8 @@
             return true;
         }
 
-        public bool IsRowEmpty(int r)
+        // Kiểm tra xem một hàng có trống hay không.
+        public bool IsRowEmpty(int r) 
         {
             for (int c = 0; c < Columns; c++)
             {
@@ -55,17 +68,18 @@
             return true;
         }
 
-        // Clearing Rows
-        private void ClearRow(int r)
+        // Xóa hàng
+        // Xóa một hàng bằng cách đặt tất cả các ô trong hàng đó thành 0.
+        private void ClearRow(int r) 
         {
             for(int c = 0; c < Columns; c++)
             {
                 grid[r, c] = 0;
-
             }
         }
 
-        private void MoveRowDown(int r, int numRows)
+        // Di chuyển một hàng xuống một số hàng cho trước.
+        private void MoveRowDown(int r, int numRows) 
         {
             for (int c = 0;c < Columns; c++)
             {
@@ -74,7 +88,8 @@
             }
         }
 
-        public int ClearFullRows()
+       // Xóa tất cả các hàng đầy trong lưới và trả về số hàng đã xóa.
+        public int ClearFullRows() 
         {
             int cleared = 0;
 
@@ -92,7 +107,6 @@
             }
             return cleared;
         }
-        // Block Rotation
     }
 }
 
