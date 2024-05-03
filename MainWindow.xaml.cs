@@ -70,22 +70,22 @@ namespace Tetris1
         {
             Image[,] imageControls = new Image[grid.Rows, grid.Columns]; 
             // Mảng 2 chiều có kích thước là hàng và cột của grid trong gameState
-            // Khung trò chơi có 12 hàng và 20 cột, mỗi ô dày 25px
+            // Khung trò chơi có 22 hàng và 10 cột, mỗi ô dày 25px
             int cellSize = 25; // kích thước của cột
 
-            for(int r = 0; r < grid.Rows; r++)
+            for(int r = 0; r < grid.Rows; r++) // lặp qua hàng
             {
-                for(int c = 0; c < grid.Columns; c++)
+                for(int c = 0; c < grid.Columns; c++) // lặp qua cột
                 {
-                    Image imageControl = new Image
+                    Image imageControl = new Image // Khởi tạo hình ảnh một ô vuông
                     {
                         Width = cellSize,
                         Height = cellSize
                     };
 
-                    Canvas.SetTop(imageControl, (r-2)*cellSize + 10);
-                    Canvas.SetLeft(imageControl, c*cellSize);
-                    GameCanvas.Children.Add(imageControl);
+                    Canvas.SetTop(imageControl, (r-2)*cellSize + 10);// set tọa độ trên cho ô
+                    Canvas.SetLeft(imageControl, c*cellSize); // set tọa độ trái cho khối ô
+                    GameCanvas.Children.Add(imageControl); //
                     imageControls[r, c] = imageControl;
                 }
             }
