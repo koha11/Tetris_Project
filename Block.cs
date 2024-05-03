@@ -2,23 +2,31 @@
 
 namespace Tetris1
 {
-    public abstract class Block
+    public abstract class Block //khởi tạo 
     {
-        protected abstract Position[][] Tiles { get; }
+        //Tạo vị trí cho từng tile(ô)
+        protected abstract Position[][] Tiles { get; } 
+        
+        //Vị trí cho khối đầu tiên bắt đầu xuất hiện trong grid(lưới)
+        protected abstract Position StartOffset { get; } 
 
-        protected abstract Position StartOffset { get; }
+        //ID để xác định từng loại block
+        public abstract int Id { get; } 
 
-        public abstract int Id { get; }
-
+        //Lưu trữ trạng thái xoay hiện tại 
         private int rotationState;
-        private Position offset;
+
+        //Lưu trữ offset(khoảng cách so với rìa) hiện tại
+        private Position offset; 
     
         public Block()
         {
-            offset = new Position(StartOffset.Row, StartOffset.Column);
+            // khởi tạo cho offset bằng với offset ban đầu
+            offset = new Position(StartOffset.Row, StartOffset.Column); 
         }
 
-        public IEnumerable<Position> TilePositions()
+        //phương thức trả về các vị trí ô trong lưới mà khối chiếm trong phép xoay và offset hiện tại
+        public IEnumerable<Position> TilePositions()  
         {
             foreach (Position p in Tiles[rotationState])
             {
@@ -26,11 +34,13 @@ namespace Tetris1
             }
         }
 
+        //Phương thức xoay khối 90 độ theo chiều kim đồng hồ 
         public void RotateCW()
         {
             rotationState = (rotationState + 1) % Tiles.Length;
         }
 
+        //Phương thức xoay khối 90 độ ngược chiều kim đồng hồ 
         public void RotateCCW()
         {
             if(rotationState == 0)
@@ -43,12 +53,14 @@ namespace Tetris1
             }
         }
 
+        //Phương thức để di chuyển khối theo 1 hàng và 1 cột cố định
         public void Move(int rows, int columns)
         {
             offset.Row += rows;
             offset.Column += columns;
         }
 
+        //Phương Thức để đặt lại độ xoay và vị trí ban đầu
         public void Reset()
         {
             rotationState = 0;
