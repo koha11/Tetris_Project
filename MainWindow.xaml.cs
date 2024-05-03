@@ -62,12 +62,15 @@ namespace Tetris1
         public MainWindow()
         {
             InitializeComponent(); // Khởi tạo cửa sổ
-            imageControls = SetupGameCanvas(gameState.GameGrid); // Vẽ khung trò chơi ra cửa sổ
+            imageControls = SetupGameCanvas(gameState.GameGrid); 
+            // Vẽ khung trò chơi ra cửa sổ, nhận GameGrid của gameState làm đối số
         }
 
         private Image[,] SetupGameCanvas(GameGrid grid) // Method dùng để vẽ khung trò chơi 
         {
             Image[,] imageControls = new Image[grid.Rows, grid.Columns]; 
+            // Mảng 2 chiều có kích thước là hàng và cột của grid trong gameState
+            // Khung trò chơi có 12 hàng và 20 cột, mỗi ô dày 25px
             int cellSize = 25; // kích thước của cột
 
             for(int r = 0; r < grid.Rows; r++)
