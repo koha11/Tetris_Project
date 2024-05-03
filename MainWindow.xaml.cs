@@ -20,9 +20,10 @@ namespace Tetris1
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Mảng các phần tử ảnh có chiều dài và chiều ngang
         private readonly ImageSource[] tileImages = new ImageSource[]
         {
-            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)), 
             new BitmapImage(new Uri("Assets/TileCyan.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/TileBlue.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/TileOrange.png", UriKind.Relative)),
@@ -30,6 +31,11 @@ namespace Tetris1
             new BitmapImage(new Uri("Assets/TileGreen.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/TilePurple.png", UriKind.Relative)),
             new BitmapImage(new Uri("Assets/TileRed.png", UriKind.Relative)),
+            //tạo ảnh hay gọi là tập hợp các pixel mà các pixel này không đổi về kích thước cũng như độ phân giải
+            //tạo ảnh dựa trên nguồn Uri
+            //đối số thứ nhất là base Uri (đường dẫn gốc)
+            //đối số thứ hai là relativeUri để xác định đường dẫn Uri là đường dẫn tuyệt đối hay tương đối
+            //trong bài này thì là đường dẫn tương đối
         };
 
         private readonly ImageSource[] blockImages = new ImageSource[]
