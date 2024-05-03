@@ -1,6 +1,6 @@
 ﻿namespace Tetris1
 {
-    public class JBlock : Block
+    public class JBlock : Block //Lớp con khối J
     {
         //Lưu trữ các vị trí ô cho bốn trạng thái xoay 
         private readonly Position[][] tiles = new Position[][]
