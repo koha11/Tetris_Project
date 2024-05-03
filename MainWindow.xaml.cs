@@ -66,7 +66,7 @@ namespace Tetris1
             // Vẽ khung trò chơi ra cửa sổ, nhận GameGrid của gameState làm đối số
         }
 
-        private Image[,] SetupGameCanvas(GameGrid grid) // Method dùng để vẽ khung trò chơi 
+        private Image[,] SetupGameCanvas(GameGrid grid) // Method dùng để vẽ khung lưới của trò chơi 
         {
             Image[,] imageControls = new Image[grid.Rows, grid.Columns]; 
             // Mảng 2 chiều có kích thước là hàng và cột của grid trong gameState
@@ -141,7 +141,7 @@ namespace Tetris1
                 imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
             }
         }
-        private void Draw(GameState gameState) // Phương thức dùng để vẽ toàn bộ khung game
+        private void Draw(GameState gameState) // Phương thức dùng để vẽ toàn bộ cửa sổ trò chơi
         {
             DrawGrid(gameState.GameGrid); // vẽ bố cục lưới cho game
             DrawGhostBlock(gameState.CurrentBlock); // vẽ
