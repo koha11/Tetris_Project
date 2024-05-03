@@ -125,7 +125,7 @@ namespace Tetris1
         {
             if(heldBlock == null)
             {
-                HoldImage.Source = blockImages[0];
+                HoldImage.Source = blockImages[0]; //
             }
             else
             {
