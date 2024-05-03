@@ -108,33 +108,33 @@ namespace Tetris1
 
         private void DrawBlock(Block block) //Phương thức dùng để vẽ block
         {
-            foreach (Position p in block.TilePositions())
+            foreach (Position p in block.TilePositions()) // Lặp qua vị trí của từng ô của block
             {
-                imageControls[p.Row, p.Column].Opacity = 1;
-                imageControls[p.Row, p.Column].Source = tileImages[block.Id];
+                imageControls[p.Row, p.Column].Opacity = 1; // set cho ô đó có thể nhìn thấy đc
+                imageControls[p.Row, p.Column].Source = tileImages[block.Id]; // set cho ô đó màu tương ứng
             }
         }
 
-        private void DrawNextBlock(BlockQueue blockQueue)
+        private void DrawNextBlock(BlockQueue blockQueue) // Vẽ block tiếp theo
         {
-            Block next = blockQueue.NextBlock;
-            NextImage.Source = blockImages[next.Id];
+            Block next = blockQueue.NextBlock; // Lấy ra block tiếp theo trong hàng đợi
+            NextImage.Source = blockImages[next.Id]; // Gắn Uri tương ứng cho block đó
         }
 
-        private void DrawHeldBlock(Block heldBlock)
+        private void DrawHeldBlock(Block heldBlock) // Vẽ block đang giữ
         {
-            if(heldBlock == null)
+            if(heldBlock == null) // Nếu không giữ block nào
             {
-                HoldImage.Source = blockImages[0]; //
+                HoldImage.Source = blockImages[0]; // Gắn Uri của empty block 
             }
-            else
+            else // Còn không
             {
-                HoldImage.Source = blockImages[heldBlock.Id];
+                HoldImage.Source = blockImages[heldBlock.Id]; // Gắn Uri của block tương ứng với id
             }
         }
-        private void DrawGhostBlock(Block block)
+        private void DrawGhostBlock(Block block) // Vẽ ra block bị hủy do hoàn thành 1 row
         {
-            int dropDistance = gameState.BlockDropDistance();
+            int dropDistance = gameState.BlockDropDistance(); // Khoảng cách
             foreach(Position p in block.TilePositions())
             {
                 imageControls[p.Row + dropDistance, p.Column].Opacity = 0.25;
@@ -153,7 +153,7 @@ namespace Tetris1
 
         private async Task GameLoop() // tạo 1 phương thức bất đồng bộ lặp lại việc vẽ ra cửa sổ khung game
         {
-            Draw(gameState);
+            Draw(gameState); // Khởi tạo khung game
 
             while(!gameState.GameOver)
             {
