@@ -85,12 +85,12 @@ namespace Tetris1
 
                     Canvas.SetTop(imageControl, (r-2)*cellSize + 10);// set tọa độ trên cho ô
                     Canvas.SetLeft(imageControl, c*cellSize); // set tọa độ trái cho khối ô
-                    GameCanvas.Children.Add(imageControl); //
-                    imageControls[r, c] = imageControl;
+                    GameCanvas.Children.Add(imageControl); //thêm child là ô vừa chỉnh tọa độ ,cho khu vực canvas có tên là Gamecanvas trong file MainWindow.xaml
+                    imageControls[r, c] = imageControl; // thêm ô đó vào mảng imageControls để có thể sửa đổi hình ảnh tại ô đó ở trong tương lai
                 }
             }
             
-            return imageControls;
+            return imageControls; // trả về mảng chứa các ô đã khởi tạo
         }
 
         private void DrawGrid(GameGrid grid)
