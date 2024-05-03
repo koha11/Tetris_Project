@@ -21,6 +21,7 @@ namespace Tetris1
     public partial class MainWindow : Window
     {
         // Mảng các phần tử ảnh có chiều dài và chiều ngang
+        // Tạo mảng các ô màu cho block
         private readonly ImageSource[] tileImages = new ImageSource[]
         {
             new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)), 
@@ -38,6 +39,7 @@ namespace Tetris1
             //trong bài này thì là đường dẫn tương đối
         };
 
+        // Tạo mảng các block
         private readonly ImageSource[] blockImages = new ImageSource[]
         {
             new BitmapImage(new Uri("Assets/Block-Empty.png", UriKind.Relative)),
@@ -50,22 +52,23 @@ namespace Tetris1
             new BitmapImage(new Uri("Assets/Block-Z.png", UriKind.Relative)),
         };
 
+        // property này dùng để kiểm soát việc vẽ khung trò chơi ra cửa sổ
         private readonly Image[,] imageControls;
 
-        private GameState gameState = new GameState();
-        private readonly int maxDelay = 1000;
-        private readonly int minDelay = 75;
-        private readonly int delayDecrease = 25;
+        private GameState gameState = new GameState(); //property dùng để kiểm soát trạng thái của trò chơi
+        private readonly int maxDelay = 1000; // set maxDelay
+        private readonly int minDelay = 75; // set minDelay
+        private readonly int delayDecrease = 25; // set thời gian delay giảm sau mỗi lần hoàn thành 1 row
         public MainWindow()
         {
-            InitializeComponent();
-            imageControls = SetupGameCanvas(gameState.GameGrid);
+            InitializeComponent(); // Khởi tạo cửa sổ
+            imageControls = SetupGameCanvas(gameState.GameGrid); // Vẽ khung trò chơi ra cửa sổ
         }
 
-        private Image[,] SetupGameCanvas(GameGrid grid)
+        private Image[,] SetupGameCanvas(GameGrid grid) // Method dùng để vẽ khung trò chơi 
         {
-            Image[,] imageControls = new Image[grid.Rows, grid.Columns];
-            int cellSize = 25;
+            Image[,] imageControls = new Image[grid.Rows, grid.Columns]; 
+            int cellSize = 25; // kích thước của cột
 
             for(int r = 0; r < grid.Rows; r++)
             {
@@ -207,8 +210,6 @@ namespace Tetris1
             GameOverMenu.Visibility = Visibility.Hidden;
             await GameLoop();
         }
-
-
     }
 
 }
