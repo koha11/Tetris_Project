@@ -93,20 +93,20 @@ namespace Tetris1
             return imageControls; // trả về mảng chứa các ô đã khởi tạo
         }
 
-        private void DrawGrid(GameGrid grid)
+        private void DrawGrid(GameGrid grid) // Phương thức dùng khởi tạo khung lưới của game
         {
-            for (int r = 0; r < grid.Rows; r++)
+            for (int r = 0; r < grid.Rows; r++) 
             {
                 for (int c = 0; c < grid.Columns; c++)
                 {
-                    int id = grid[r, c];
-                    imageControls[r,c].Opacity = 1;
-                    imageControls[r,c].Source = tileImages[id];
+                    int id = grid[r,c]; // gán id = giá trị của ô trong GameGrid 
+                    imageControls[r,c].Opacity = 1; // Set độ rõ cho ô là 1
+                    imageControls[r,c].Source = tileImages[id]; //gắn biến ImageSource chứa hình ảnh của ô màu vào mảng 2c imageControls để hiển thị trên cửa sổ
                 }
             }
         }
 
-        private void DrawBlock(Block block)
+        private void DrawBlock(Block block) //Phương thức dùng để vẽ block
         {
             foreach (Position p in block.TilePositions())
             {
@@ -141,60 +141,60 @@ namespace Tetris1
                 imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
             }
         }
-        private void Draw(GameState gameState)
+        private void Draw(GameState gameState) // Phương thức dùng để vẽ toàn bộ khung game
         {
-            DrawGrid(gameState.GameGrid);
-            DrawGhostBlock(gameState.CurrentBlock);
-            DrawBlock(gameState.CurrentBlock);
-            DrawNextBlock(gameState.BlockQueue);
-            DrawHeldBlock(gameState.HeldBlock);
-            ScoreText.Text = $"Score: {gameState.Score}";
+            DrawGrid(gameState.GameGrid); // vẽ bố cục lưới cho game
+            DrawGhostBlock(gameState.CurrentBlock); // vẽ
+            DrawBlock(gameState.CurrentBlock); // Vẽ các khối trong grid
+            DrawNextBlock(gameState.BlockQueue); // Vẽ khối tiếp theo
+            DrawHeldBlock(gameState.HeldBlock); // Vẽ khối đang giữ
+            ScoreText.Text = $"Score: {gameState.Score}"; // Hiển thị điểm ra cửa sổ
         }
 
-        private async Task GameLoop()
+        private async Task GameLoop() // tạo 1 phương thức bất đồng bộ lặp lại việc vẽ ra cửa sổ khung game
         {
             Draw(gameState);
 
             while(!gameState.GameOver)
             {
-                int delay = Math.Max(minDelay, maxDelay - (gameState.Score * delayDecrease));
-                await Task.Delay(500);
+                int delay = Math.Max(minDelay, maxDelay - (gameState.Score * delayDecrease)); //điểm càng cao thì delay càng thấp
+                await Task.Delay(delay); //cứ mỗi khoảng tgian nhất định sẽ lặp lại việc vẽ và đưa block xuống 1 ô
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
-            GameOverMenu.Visibility = Visibility.Visible;
-            FinalScoreText.Text = $"Final Score: {gameState.Score}";
+            GameOverMenu.Visibility = Visibility.Visible; // khi game over thì hiển thị ra bảng gameovermenu
+            FinalScoreText.Text = $"Final Score: {gameState.Score}"; // đồng thời hiển thị ra final score
         }
 
-        private void Window_keydown(object sender, KeyEventArgs e)
+        private void Window_keydown(object sender, KeyEventArgs e) //tạo event key_down cho class
         {
-            if(gameState.GameOver)
+            if(gameState.GameOver) //game over thì key_down kco tdung
             {
                 return;
             }
 
             switch(e.Key)
             {
-                case Key.Left:
-                    gameState.MoveBlockLeft();
+                case Key.Left: 
+                    gameState.MoveBlockLeft(); //di chuyen block qua trai 1 o
                     break;
                 case Key.Right:
-                    gameState.MoveBlockRight();
+                    gameState.MoveBlockRight(); //di chuyen block qua phai 1 o
                     break;
                 case Key.Down:
-                    gameState.MoveBlockDown();
+                    gameState.MoveBlockDown(); //di chuyen block xuong 1 o
                     break;
                 case Key.Up:
-                    gameState.RotateBlockCW();
+                    gameState.RotateBlockCW(); //xoay block ...
                     break;
                 case Key.Z:
-                    gameState.RotateBlockCCW();
+                    gameState.RotateBlockCCW(); //xoay block ...
                     break;
                 case Key.C:
-                    gameState.HoldBlock();
+                    gameState.HoldBlock(); // giu block lai
                     break;
                 case Key.Space:
-                    gameState.DropBlock();
+                    gameState.DropBlock(); //
                     break;
                 default:
                     return;
