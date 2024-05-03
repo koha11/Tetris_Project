@@ -191,27 +191,27 @@ namespace Tetris1
                     gameState.RotateBlockCCW(); //xoay block ...
                     break;
                 case Key.C:
-                    gameState.HoldBlock(); // giu block lai
+                    gameState.HoldBlock(); // giữ block lại
                     break;
                 case Key.Space:
-                    gameState.DropBlock(); //
+                    gameState.DropBlock(); // Thả block xuống tức thì
                     break;
                 default:
                     return;
             }
 
-            Draw(gameState);
+            Draw(gameState); // Vẽ lại grid
         }
 
-        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        private async void GameCanvas_Loaded(object sender, RoutedEventArgs e) //event loaded của gamecanvas
         {
-            await GameLoop();
+            await GameLoop(); // Tức là khi GameCanvas được khởi tạo thì sẽ chạy pthuc GameLoop() để bắt đầu trò chơi
         }
-        private async void PlayAgain_Click(object sender, RoutedEventArgs e)
+        private async void PlayAgain_Click(object sender, RoutedEventArgs e) //event click để chơi lại
         {
-            gameState = new GameState();
-            GameOverMenu.Visibility = Visibility.Hidden;
-            await GameLoop();
+            gameState = new GameState(); //Khởi tạo lại trạng thái game từ đầu
+            GameOverMenu.Visibility = Visibility.Hidden; // Ẩn gameovermenu
+            await GameLoop(); // Chạy lại pthuc gameloop
         }
     }
 
