@@ -12,7 +12,7 @@ namespace Tetris1
                 currentBlock = value;
                 currentBlock.Reset();
 
-                !-- Làm cho khi block được spawn ra thì sẽ thấy được hết block chứ không phải 1 nửa block -->
+                // Làm cho khi block được spawn ra thì sẽ thấy được hết block chứ không phải 1 nửa block 
 
                 for(int i=0;i<2;i++)
                 {
@@ -40,13 +40,13 @@ namespace Tetris1
 
         public GameState()
         {
-            <!-- Khởi tạo GameGrid với 22 hàng và 10 cột -->
+            // Khởi tạo GameGrid với 22 hàng và 10 cột 
             GameGrid = new GameGrid(22, 10);
             BlockQueue = new BlockQueue();
             CurrentBlock = BlockQueue.GetAndUpdate();
             CanHold = true;
         }
-        <!-- Hàm kiểm tra CurrentBlock có ở vị trí hợp lệ hay không -->
+        // Hàm kiểm tra CurrentBlock có ở vị trí hợp lệ hay không 
         private bool BlockFits()
         {
             <!-- Lặp qua từng vị trí của CurrentBlock nếu mà nằm bên ngoài grid thì trả về false ngược lại trả về true -->
@@ -59,20 +59,20 @@ namespace Tetris1
             }
             return true;
         }
-        <!-- Hàm cho người chơi lựa chọn có muốn lấy block được random ra không -->
+        // Hàm cho người chơi lựa chọn có muốn lấy block được random ra không
         public void HoldBlock()
         {
             if(!CanHold)
             {
                 return;
             }
-            <!-- Không có block nào thì gán HeldBlock là CurrentBlock và CurrentBlock là block tiếp theo  -->
+            // Không có block nào thì gán HeldBlock là CurrentBlock và CurrentBlock là block tiếp theo  
             if(HeldBlock == null)
             {
                 HeldBlock = CurrentBlock;
                 CurrentBlock = BlockQueue.GetAndUpdate();
             }
-            <!-- Nếu block nào được giữ thì đổi CurrentBlock với HeldBlock  -->
+            // Nếu block nào được giữ thì đổi CurrentBlock với HeldBlock 
             else
             {
                 Block temp = CurrentBlock;
@@ -81,7 +81,7 @@ namespace Tetris1
             }
             CanHold = false;
         }
-        <!-- Hàm xoay CurrentBlock theo chiều kim đồng hồ nếu CurrentBlock ở vị trí không hợp lệ thì xoay nó ngược chiều kim đồng hồ bằng hàm RotateCCW  -->
+        // Hàm xoay CurrentBlock theo chiều kim đồng hồ nếu CurrentBlock ở vị trí không hợp lệ thì xoay nó ngược chiều kim đồng hồ bằng hàm RotateCCW 
         public void RotateBlockCW()
         {
             CurrentBlock.RotateCW();
@@ -100,11 +100,11 @@ namespace Tetris1
                 CurrentBlock.RotateCW();
             }
         }
-        <!-- Hàm di chuyển các CurrentBlock -->
+        // Hàm di chuyển các CurrentBlock 
         public void MoveBlockLeft()
         {
             CurrentBlock.Move(0, -1);
-            <!--Nếu vị trí di chuyển của CurrentBlock không hợp lệ thì di chuyển ngược trở lại -->
+            // Nếu vị trí di chuyển của CurrentBlock không hợp lệ thì di chuyển ngược trở lại 
             if(!BlockFits())
             {
                 CurrentBlock.Move(0, 1);
@@ -120,39 +120,39 @@ namespace Tetris1
                 CurrentBlock.Move(0, -1);
             }
         }
-        <!-- Hàm kiểm tra game kết thúc chưa -->
+        // Hàm kiểm tra game kết thúc chưa
         private bool IsGameOver()
         {
-            <!-- Nếu hàng đầu không trống thì game kết thúc thua -->
+            // Nếu hàng đầu không trống thì game kết thúc thua 
             return !(GameGrid.IsRowEmpty(0) && GameGrid.IsRowEmpty(1));
         }
-        <!-- Hàm đặt currrentBlock vào GameGrid và không thể di chuyển block đó xuống -->
+        // Hàm đặt currrentBlock vào GameGrid và không thể di chuyển block đó xuống 
         private void PlaceBlock()
         {
-            <!-- Lặp qua từng TilePositions của CurrentBlock và gán vị trí của GameGrid bằng Id của CurrentBlock  để đánh dấu ô đó đã được sử dụng-->
+            // Lặp qua từng TilePositions của CurrentBlock và gán vị trí của GameGrid bằng Id của CurrentBlock  để đánh dấu ô đó đã được sử dụng
             foreach (Position p in CurrentBlock.TilePositions())
             {
                 GameGrid[p.Row, p.Column] = CurrentBlock.Id;
             }
-            <!-- Tổng số điểm là bằng tổng số hàng được xóa -->
+            // Tổng số điểm là bằng tổng số hàng được xóa
             Score += GameGrid.ClearFullRows();
-            <!-- Kiểm tra game kết thúc thì gán thuộc tính GameOver true-->
+            // Kiểm tra game kết thúc thì gán thuộc tính GameOver true
             if (IsGameOver())
             {
                 GameOver = true;
             }
-            <!-- Game chưa kết thúc thì cho update CurrentBlock là block tiếp theo -->
+            // Game chưa kết thúc thì cho update CurrentBlock là block tiếp theo 
             else
             {
                 CurrentBlock = BlockQueue.GetAndUpdate();
                 CanHold = true;
             }
         }
-        <!-- Hàm di chuyển CurrentBlock xuống dưới -->
+        // Hàm di chuyển CurrentBlock xuống dưới
         public void MoveBlockDown()
         {
             CurrentBlock.Move(1, 0);
-            <!-- Gọi tới hàm PlaceBlock khi mà block không thể di chuyển xuống dưới -->
+            // Gọi tới hàm PlaceBlock khi mà vị trí block đi chuyển không hợp lệ để kiểm tra và cập nhật block
             if(!BlockFits())
             {
                 CurrentBlock.Move(-1, 0);
@@ -160,7 +160,7 @@ namespace Tetris1
 
             }
         }
-        <!-- Hàm tìm số hàng của block có thể di chuyển xuống dưới -->
+        // Hàm tìm số hàng của block có thể di chuyển xuống dưới 
         private int TileDropDistance(Position p)
         {
             int drop = 0;
@@ -170,7 +170,7 @@ namespace Tetris1
             }
         return drop;
         }
-        <!-- Hàm lặp qua từng vị trí của CurrentBlock để tìm ra khoảng cách tối thiểu mà block có thể di chuyển xuống dưới -->
+        // Hàm lặp qua từng vị trí của CurrentBlock để tìm ra khoảng cách tối thiểu mà block có thể di chuyển xuống dưới 
         public int BlockDropDistance()
         {
             int drop = GameGrid.Rows;
@@ -180,7 +180,7 @@ namespace Tetris1
             }
             return drop;
         }
-        <!-- Hàm di chuyển block xuống dưới hàng cuối cùng trong grid và kiểm tra trò chơi kết thúc và cập nhật block bằng hàm PlaceBlock -->
+        // Hàm di chuyển block xuống dưới hàng cuối cùng trong grid và kiểm tra trò chơi kết thúc và cập nhật block bằng hàm PlaceBlock
         public void DropBlock()
         {
             CurrentBlock.Move(BlockDropDistance(), 0);
