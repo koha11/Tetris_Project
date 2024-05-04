@@ -49,7 +49,7 @@ namespace Tetris1
         // Hàm kiểm tra CurrentBlock có ở vị trí hợp lệ hay không 
         private bool BlockFits()
         {
-            <!-- Lặp qua từng vị trí của CurrentBlock nếu mà nằm bên ngoài grid thì trả về false ngược lại trả về true -->
+            // Lặp qua từng vị trí của CurrentBlock nếu mà nằm bên ngoài grid thì trả về false ngược lại trả về true 
             foreach (Position p in CurrentBlock.TilePositions())
             {
                 if(!GameGrid.IsEmpty(p.Row, p.Column))
