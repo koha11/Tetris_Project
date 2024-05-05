@@ -19,6 +19,8 @@ namespace Tetris1
             new TBlock(),
             //Tạo một khối Z mới
             new ZBlock()
+            //Tạo một khối O mới
+            new OBlock()
         };
         //Khởi tạo đối tượng Random để chọn khối ngẫu nhiên
         private readonly Random random = new Random();
